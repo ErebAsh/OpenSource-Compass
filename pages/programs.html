@@ -2,28 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Open Source Programs - OpenSource Compass</title>
+    <title>Programs - OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .filter-section {
+        .filter-container {
             background-color: var(--light-gray);
             padding: 40px 8%;
             display: flex;
-            gap: 20px;
-            justify-content: center;
+            gap: 15px;
             flex-wrap: wrap;
+            justify-content: center;
         }
-        #searchBar, #categoryFilter {
+        .filter-input {
             padding: 12px 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
         }
+        .filter-input:focus { border-color: var(--secondary-blue); }
         #searchBar { flex: 1; max-width: 400px; }
-        .programs-grid { min-height: 400px; }
+        .programs-grid-container { padding: 40px 8%; min-height: 500px; }
     </style>
 </head>
 <body>
@@ -38,9 +40,9 @@
     </nav>
 </header>
 
-<section class="filter-section">
-    <input type="text" id="searchBar" placeholder="Search by program name...">
-    <select id="categoryFilter">
+<section class="filter-container">
+    <input type="text" id="searchBar" class="filter-input" placeholder="Search by name...">
+    <select id="categoryFilter" class="filter-input">
         <option value="all">All Difficulty Levels</option>
         <option value="Beginner Friendly">Beginner Friendly</option>
         <option value="Intermediate">Intermediate</option>
@@ -48,19 +50,15 @@
     </select>
 </section>
 
-<section class="programs-grid">
+<div class="programs-grid-container">
     <div id="programsGrid" class="card-container">
         </div>
-</section>
+</div>
 
 <footer>
     <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
 </footer>
 
 <script src="Js_scripts/programs.js"></script>
-<script>
-    // Initialize the page logic
-    document.addEventListener('DOMContentLoaded', loadPrograms);
-</script>
 </body>
 </html>
