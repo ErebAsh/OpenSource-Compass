@@ -93,7 +93,16 @@ header h1 a {
     font-size: 22px;
     font-weight: 700;
 }
-
+#state-container {
+    margin: 40px 8%;
+    padding: 24px;
+    background-color: #F5F7FA;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #2E2E2E;
+}
 nav a {
     margin-left: 24px;
     font-weight: 500;
