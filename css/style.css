@@ -77,8 +77,10 @@ body {
    Header / Navbar
 ========================= */
 header {
-    background-color: var(--white);
-    border-bottom: 1px solid #eaeaea;
+    background-color: rgb(18,18,64);
+    border-bottom: 1px solid rgb(18,18,64);
+    /* background-color: var(--white);
+    border-bottom: 1px solid #eaeaea; */
     padding: 16px 8%;
     display: flex;
     justify-content: space-between;
@@ -89,7 +91,7 @@ header {
 }
 
 header h1 a {
-    color: var(--primary-blue);
+    color: var(--white);
     font-size: 22px;
     font-weight: 700;
 }
@@ -106,7 +108,7 @@ header h1 a {
 nav a {
     margin-left: 24px;
     font-weight: 500;
-    color: var(--text-dark);
+    color: var(--white);
     transition: color 0.3s ease;
 }
 
@@ -127,7 +129,7 @@ nav a:hover {
 
 .hero h2 {
     font-size: 48px;
-    color: var(--primary-blue);
+    color: var(--primary-);
     margin-bottom: 16px;
 }
 
@@ -345,6 +347,7 @@ footer::before {
 .card:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
 
 /* =========================
    Animations

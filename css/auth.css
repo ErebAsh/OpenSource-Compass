@@ -3,12 +3,14 @@
 ========================= */
 
 .auth-section {
-    min-height: calc(100vh - 200px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 8%;
-    background-color: var(--light-gray);
+    padding: 40px;
+     background-image: url(../assets/login.jpeg);
+     width:100%;
+     background-size: cover;
+     min-height: 100vh;
 }
 
 .auth-container {
@@ -17,14 +19,18 @@
 }
 
 .auth-card {
-    background-color: var(--white);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0); 
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 2rem;
+    padding: 2rem 3rem ;
+    color: white;
+    backdrop-filter: blur(7px);
+    width:100%;
+    
 }
 
 .auth-card h2 {
-    color: var(--primary-blue);
+    color: var(--white);
     font-size: 28px;
     margin-bottom: 8px;
     text-align: center;
@@ -32,7 +38,7 @@
 
 .auth-subtitle {
     text-align: center;
-    color: var(--text-dark);
+    color: var(--white);
     margin-bottom: 32px;
     font-size: 14px;
 }
@@ -48,7 +54,7 @@
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: var(--text-dark);
+    color: var(--white);
     font-weight: 500;
     font-size: 14px;
 }
@@ -66,7 +72,7 @@
 
 .form-group input:focus {
     outline: none;
-    border-color: var(--secondary-blue);
+    border-color: var(--white);
     box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.1);
 }
 
@@ -83,7 +89,7 @@
 
 .form-hint {
     display: block;
-    color: #666;
+    color: var(--white);
     font-size: 12px;
     margin-top: 6px;
 }
@@ -100,7 +106,7 @@
     align-items: center;
     cursor: pointer;
     font-size: 14px;
-    color: var(--text-dark);
+    color: var(--white);
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -138,7 +144,7 @@
 }
 
 .auth-footer p {
-    color: var(--text-dark);
+    color: var(--white);
     font-size: 14px;
 }
 
