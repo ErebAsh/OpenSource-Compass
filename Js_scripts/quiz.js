@@ -126,7 +126,19 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.textContent = opt;
             btn.onclick = () => checkAnswer(i, btn);
             optionsContainer.appendChild(btn);
+            optionsContainer.appendChild(btn);
         });
+
+        // Add Explanation Container (Hidden initially)
+        const explanationDiv = document.createElement('div');
+        explanationDiv.id = 'explanation-text';
+        explanationDiv.style.marginTop = '15px';
+        explanationDiv.style.padding = '10px';
+        explanationDiv.style.backgroundColor = '#f0f8ff';
+        explanationDiv.style.borderLeft = '4px solid #4D96FF';
+        explanationDiv.style.display = 'none'; // Hidden
+        explanationDiv.style.color = '#333';
+        optionsContainer.appendChild(explanationDiv);
     }
 
     function checkAnswer(selectedIndex, btn) {
@@ -141,6 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             btn.classList.add('incorrect');
             options[correctIndex].classList.add('correct');
+        }
+
+        // Show Explanation
+        const explanationDiv = document.getElementById('explanation-text');
+        if (explanationDiv) {
+            explanationDiv.textContent = questions[currentQuestionIndex].explanation || "No explanation available.";
+            explanationDiv.style.display = 'block';
         }
 
         nextBtn.style.display = 'block';
