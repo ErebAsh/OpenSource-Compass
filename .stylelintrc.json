@@ -1,0 +1,11 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "alpha-value-notation": "percentage",
+    "font-family-name-quotes": "always-unless-keyword",
+    "media-feature-range-notation": "context",
+    "selector-id-pattern": null,
+    "keyframes-name-pattern": null,
+    "rule-empty-line-before": null
+  }
+}

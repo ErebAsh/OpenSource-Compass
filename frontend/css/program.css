@@ -1,0 +1,150 @@
+/* -------------------------
+  Program Card Container
+------------------------- */
+.program-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 400px;
+  margin: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.program-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Accent bar for difficulty */
+.card-accent {
+  height: 6px;
+  width: 100%;
+}
+
+/* -------------------------
+  Card Content
+------------------------- */
+.card-content {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.card-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* -------------------------
+  Meta Information Grid
+------------------------- */
+.card-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px 16px;
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.card-meta-grid div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* -------------------------
+  Skills / Contributions Tags
+------------------------- */
+.card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.skill-tag {
+  background: #f5f5f5;
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* -------------------------
+  Stats (Contributors, Issues, Orgs)
+------------------------- */
+.card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.card-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* -------------------------
+  Card Link Button
+------------------------- */
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: var(--primary-gold, #f39c12);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.card-link:hover {
+  background-color: #e08e0b;
+}
+
+/* -------------------------
+  Icons
+------------------------- */
+.card-meta-grid i,
+.card-stats i {
+  color: #888;
+}
+
+/* -------------------------
+  Responsive
+------------------------- */
+@media (max-width: 768px) {
+  .card-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .program-card {
+    max-width: 100%;
+    margin: 12px 0;
+  }
+}

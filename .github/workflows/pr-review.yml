@@ -1,0 +1,45 @@
+name: PR Review & Frontend Quality
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    name: Validate Frontend Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate HTML
+        run: |
+          npx html-validate "frontend/pages/**/*.html" --preset "standard"
+        continue-on-error: false
+
+      - name: Lint CSS
+        uses: actions-hub/stylelint@master
+        env:
+          PATTERN: "frontend/css/**/*.css"
+
+      - name: Check Broken Links
+        uses: lycheeverse/lychee-action@v1.9.3
+        with:
+          args: --no-progress --verbose 'frontend/pages/**/*.html'
+          fail: true
+
+      - name: Comment on Success
+        if: success()
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: "✅ All checks passed!"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
