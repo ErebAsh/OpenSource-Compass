@@ -56,3 +56,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// ===============================
+// Scroll Progress Indicator (Top)
+// ===============================
+const scrollProgressBar = document.getElementById('scrollProgress');
+
+if (scrollProgressBar) {
+  window.addEventListener(
+    'scroll',
+    () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+      if (docHeight <= 0) {
+        scrollProgressBar.style.width = '0%';
+        return;
+      }
+
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      scrollProgressBar.style.width = `${scrollPercent}%`;
+    },
+    { passive: true }
+  );
+}

@@ -594,3 +594,21 @@ body.dark-mode footer.site-footer {
   z-index: 9999;
 }
 
+/* =========================
+   SCROLL PROGRESS INDICATOR
+========================= */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  z-index: 2000; /* Above navbar */
+  transition: width 0.15s ease-out;
+}
+
