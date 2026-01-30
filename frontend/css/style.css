@@ -767,6 +767,23 @@ body.dark-mode footer.site-footer {
    UPCOMING BADGE DESIGN
 ========================= */
 
+/* =========================
+   SCROLL PROGRESS INDICATOR
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  z-index: 2000; /* Above navbar */
+  transition: width 0.15s ease-out;
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
