@@ -253,3 +253,35 @@ body, .program-card, .card-btn, h3, p {
     max-width: 100%;
   }
 }
+
+/* ==========================
+   Dark Mode Overrides
+========================== */
+
+.dark-mode {
+  --bg-cream: #0f172a;
+  --text-dark: #f8fafc;
+  --text-gray: #9ca3af;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Program Cards Dark Mode */
+.dark-mode .program-card {
+  background: #111827;
+  border-color: #1f2933;
+}
+
+.dark-mode .program-card h3 {
+  color: #f9fafb;
+}
+
+.dark-mode .program-card p {
+  color: #d1d5db;
+}
+
+.dark-mode .skill-tag {
+  background: #1f2937;
+  color: #fbbf24;
+  border-color: #374151;
+}
