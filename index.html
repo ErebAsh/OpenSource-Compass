@@ -1,113 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="OpenSource Compass" />
-    <meta property="og:description" content="OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information." />
-    <meta property="og:image" content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
-    <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
-    <meta property="og:type" content="website" />
+<head>
+    <meta charset="UTF-8">
     <title>OpenSource Compass</title>
-    <meta
-      name="description"
-      content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources."
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="frontend/css/style.css"/>
-    <link rel="stylesheet" href="frontend/css/home.css" />
-  </head>
-  <body>
-    <div id="navbar"></div>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    
+    <style>
+        :root {
+            --primary-blue: #1F3C88;
+            --secondary-blue: #4D96FF;
+            --light-gray: #F5F7FA;
+            --text-dark: #2E2E2E;
+            --success-green: #3CCF91;
+            --white: #FFFFFF;
+        }
 
-    <section class="hero" aria-label="OpenSource Compass hero">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="hero-dot" aria-hidden="true"></span>
-            Your map to open source
-          </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-          <h2>Navigate Your Open Source Odyssey</h2>
-          <p>
-            Discover timeless wisdom for open source mastery. From first commit to
-            maintainer status, chart your course with proven guides and legendary
-            programs.
-          </p>
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-          <div class="hero-actions">
-            <button
-              class="hero-btn hero-btn-primary"
-              type="button"
-              onclick="document.querySelector('#programs').scrollIntoView({behavior: 'smooth'})"
-            >
-              <i class="fas fa-rocket" aria-hidden="true"></i>
-              Launch Journey
-            </button>
-            <a class="hero-btn hero-btn-secondary" href="frontend/pages/guides.html">
-              <i class="fas fa-book-open" aria-hidden="true"></i>
-              Browse Guides
-            </a>
-          </div>
+        /* ---------- Navbar ---------- */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid #eaeaea;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-          <div class="hero-chips" aria-label="Highlights">
-            <span class="hero-chip"
-              ><i class="fas fa-seedling" aria-hidden="true"></i>
-              Beginner-friendly</span
-            >
-            <span class="hero-chip"
-              ><i class="fas fa-compass" aria-hidden="true"></i> Curated
-              paths</span
-            >
-            <span class="hero-chip"
-              ><i class="fas fa-code-branch" aria-hidden="true"></i> Real
-              programs</span
-            >
-          </div>
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 22px;
+        }
+
+        nav a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--secondary-blue);
+        }
+
+        /* ---------- Hero Section ---------- */
+        .hero {
+            background-color: var(--light-gray);
+            padding: 80px 8%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        .hero button,
+        .hero-btn {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .hero button:hover,
+        .hero-btn:hover {
+            background-color: var(--primary-blue);
+        }
+
+        /* ---------- Section Common ---------- */
+        section {
+            padding: 64px 8%;
+        }
+
+        section h3 {
+            font-size: 28px;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+
+        section p {
+            max-width: 700px;
+            margin-bottom: 32px;
+        }
+
+        /* ---------- Cards ---------- */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-blue);
+        }
+
+        /* ---------- Programs Section ---------- */
+        .programs {
+            background-color: var(--light-gray);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--success-green);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 24px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+        }
+        
+
+/* ✅ Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 999999;
+  backdrop-filter: blur(6px);
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+/* Also allow opening via :target (anchor href="#regOverlay") */
+.modal-overlay:target {
+  display: flex;
+}
+
+.modal {
+  width: min(560px, 96vw);
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(12px);
+  animation: popIn 0.25s ease forwards;
+}
+
+@keyframes popIn {
+  to { transform: translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  border: none;
+  background: #f3f4f6;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: #e5e7eb;
+}
+
+.modal-head {
+  padding: 22px 22px 6px;
+  border-bottom: 1px solid #f0f0f0;
+  background:
+    radial-gradient(600px 200px at 20% 0%, rgba(77,150,255,0.22), transparent 55%),
+    radial-gradient(600px 220px at 80% 0%, rgba(60,207,145,0.18), transparent 60%),
+    #fff;
+}
+
+.modal-badge {
+  display: inline-block;
+  background: var(--primary-blue);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.modal-head h3 {
+  margin: 0;
+  color: var(--primary-blue);
+  font-size: 22px;
+}
+
+.modal-head p {
+  margin: 6px 0 12px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.modal-form {
+  padding: 18px 22px 22px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #334155;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--secondary-blue), var(--primary-blue));
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  display: none;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.status {
+  margin-top: 10px;
+  font-size: 13px;
+  min-height: 18px;
+  color: #334155;
+}
+
+.status.ok { color: #0f766e; }
+.status.err { color: #ef4444; }
+    </style>
+</head>
+
+
+
+<body>
+
+<!-- Navbar -->
+<header>
+    <h1>OpenSource Compass</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Guides</a>
+        <a href="#">Programs</a>
+        <a href="#">Resources</a>
+        <a href="#">Contribute</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Navigate Your Open Source Journey</h2>
+    <p>
+        OpenSource Compass helps beginners understand open source,
+        make their first meaningful contributions, and explore
+        open-source programs with confidence.
+    </p>
+  <a id="openRegBtn" href="#regOverlay" class="hero-btn">Register Now</a>
+</section>
+<!-- Registration Modal -->
+<div class="modal-overlay" id="regOverlay">
+  <div class="modal">
+    <a class="modal-close" id="closeRegBtn" href="#">✕</a>
+
+    <div class="modal-head">
+      <div class="modal-badge">SWOC</div>
+      <h3>Registration Form</h3>
+      <p>Fill your details — we'll mail you updates.</p>
+    </div>
+
+    <form class="modal-form" id="regForm">
+      <div class="grid">
+        <div class="field">
+          <label>Name</label>
+          <input name="name" type="text" placeholder="Your name" required>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="hero-orb">
-            <div class="hero-orb-ring"></div>
-            <div class="hero-orb-core">
-              <i class="fas fa-compass"></i>
-            </div>
-            <div class="hero-orb-needle"></div>
-          </div>
+        <div class="field">
+          <label>Email</label>
+          <input name="email" type="email" placeholder="yourmail@gmail.com" required>
+        </div>
+      </div>
 
-          <svg
-            class="hero-route"
-            viewBox="0 0 520 320"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              class="hero-route-path"
-              d="M30 250 C130 140, 190 290, 280 190 C350 110, 420 160, 490 70"
-            />
-            <circle class="hero-route-dot" cx="30" cy="250" r="6" />
-            <circle class="hero-route-dot" cx="280" cy="190" r="6" />
-            <circle class="hero-route-dot" cx="490" cy="70" r="6" />
-          </svg>
+      <div class="grid">
+        <div class="field">
+          <label>GitHub Username</label>
+          <input name="github" type="text" placeholder="e.g., ganeshkannan" required>
+        </div>
 
-          <div class="hero-floats">
-            <div class="hero-float hero-float-1">
-              <i class="fas fa-list-check" aria-hidden="true"></i>
-              Good first issues
-            </div>
-            <div class="hero-float hero-float-2">
-              <i class="fas fa-people-group" aria-hidden="true"></i>
-              Community-first
-            </div>
-            <div class="hero-float hero-float-3">
-              <i class="fas fa-award" aria-hidden="true"></i>
-              Programs hub
-            </div>
-          </div>
+        <div class="field">
+          <label>Phone</label>
+          <input name="phone" type="tel" placeholder="+91 98765 43210" required>
+        </div>
+      </div>
+
+      <button class="submit-btn" type="submit" id="submitBtn">
+        <span class="btn-text">Submit Registration</span>
+        <span class="btn-loader"></span>
+      </button>
+
+      <p class="status" id="statusMsg"></p>
+    </form>
+  </div>
+</div>
+
+
+<!-- Why Section -->
+<section>
+    <h3>Why OpenSource Compass?</h3>
+    <p>
+        Starting open source can be overwhelming. This platform simplifies
+        the process with structured guidance, best practices, and a
+        centralized program hub.
+    </p>
+
+    <div class="card-container">
+        <div class="card">
+            <h4>Beginner Friendly</h4>
+            <p>Clear explanations and simple steps for first-time contributors.</p>
+        </div>
+
+        <div class="card">
+            <h4>Best Practices</h4>
+            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
         </div>
 
         <div class="card">
@@ -150,114 +464,88 @@
             <h4>Social Winter of Code</h4>
             <p>Beginner-focused winter open-source program.</p>
             <span class="badge">Upcoming</span>
-      </div>
-    </section>
-
-    <main>
-      <section id="why">
-        <h3>Why OpenSource Compass?</h3>
-        <p>
-          Timeless principles meet modern open source. Structured paths built from
-          decades of collective wisdom.
-        </p>
-
-        <div class="card-grid">
-          <div class="card fade-in">
-            <h4><i class="fas fa-seedling"></i> Timeless Foundations</h4>
-            <p>Proven methodologies refined over years of open source evolution.</p>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-scroll"></i> Code of Conduct Mastery</h4>
-            <p>Navigate community norms with confidence and cultural fluency.</p>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-users"></i> Mentor Network</h4>
-            <p>Connect with maintainers and peers who help you level up.</p>
-          </div>
         </div>
-      </section>
 
-      <section class="stats">
-        <h3>Open Source Impact</h3>
-        <div class="stats-grid">
-          <div class="stat-item fade-in">
-            <h2>50K+</h2>
-            <p>First Contributions</p>
-          </div>
-          <div class="stat-item fade-in">
-            <h2>200+</h2>
-            <p>Programs Tracked</p>
-          </div>
-          <div class="stat-item fade-in">
-            <h2>10K+</h2>
-            <p>Active Mentors</p>
-          </div>
-          <div class="stat-item fade-in">
-            <h2>5Y+</h2>
-            <p>Proven Track Record</p>
-          </div>
+        <div class="card">
+            <h4>GirlScript Summer of Code</h4>
+            <p>Large-scale open-source program for students.</p>
+            <span class="badge">Annual</span>
         </div>
-      </section>
 
-      <section class="programs" id="programs">
-        <h3>Legendary Open Source Programs</h3>
-        <p>Curated programs with historical success rates and maintainer insights.</p>
-
-        <div class="card-grid">
-          <div class="card fade-in">
-            <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
-            <p>India's premier winter program with strong mentorship culture.</p>
-            <span class="badge">Jan 2026</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
-            <p>Large-scale program with mentors, tasks, and community learning.</p>
-            <span class="badge">Summer 2026</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
-            <p>Global standard for student contributors and open source orgs.</p>
+        <div class="card">
+            <h4>Google Summer of Code</h4>
+            <p>Global program for advanced contributors.</p>
             <span class="badge">Advanced</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-leaf"></i> Outreachy</h4>
-            <p>Paid internships supporting underrepresented people in tech.</p>
-            <span class="badge">Internship</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-mountain"></i> MLH Fellowship</h4>
-            <p>Work in pods on real projects with guided mentorship.</p>
-            <span class="badge">Spring</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fab fa-linux"></i> Linux Foundation Mentorship</h4>
-            <p>Paid mentorships across major Linux Foundation projects.</p>
-            <span class="badge">Professional</span>
-          </div>
         </div>
-      </section>
+    </div>
+</section>
 
-      <section class="newsletter">
-        <h3>Stay Ahead of Open Source</h3>
-        <p>Weekly dispatches: deadlines, AMAs, and contribution strategies.</p>
-        <form>
-          <input type="email" placeholder="Your dev email..." required />
-          <button type="submit">
-            <i class="fas fa-paper-plane" style="margin-right: 0.4rem"></i>
-            Subscribe
-          </button>
-        </form>
-      </section>
-    </main>
+<!-- Footer -->
+<footer>
+    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+</footer>
+<-----form script----
+<script>
+// Simple local modal & form handling + persistence + CSV export
+const overlay = document.getElementById("regOverlay");
+const openBtn = document.getElementById("openRegBtn");
+const closeBtn = document.getElementById("closeRegBtn");
+const form = document.getElementById("regForm");
+const statusMsg = document.getElementById("statusMsg");
+const submitBtn = document.getElementById("submitBtn");
+const STORAGE_KEY = 'registrations_v1';
 
-    <div id="footer"></div>
+function escapeHtml(str){
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
-    <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
-      <i class="fas fa-chevron-up"></i>
-    </button>
+function loadRegistrations(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch(e){ return []; }
+}
 
-    <script src="frontend/js/components.js"></script>
-    <script src="frontend/js/theme.js"></script>
-    <script src="frontend/js/home.js"></script>
-  </body>
+function saveRegistrations(arr){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+
+function addRegistration(data){
+  const regs = loadRegistrations();
+  regs.unshift(Object.assign({}, data, { timestamp: new Date().toISOString() }));
+  saveRegistrations(regs);
+}
+
+console.log("Modal loaded");
+
+if (openBtn && overlay) {
+  openBtn.addEventListener('click', function(e){ e.preventDefault(); overlay.classList.add('show'); document.body.style.overflow = 'hidden'; });
+}
+function closeModal(){ if (overlay) { overlay.classList.remove('show'); document.body.style.overflow = ''; } }
+if (closeBtn) closeBtn.addEventListener('click', closeModal);
+if (overlay) overlay.addEventListener('click', (e)=> { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e)=> { if (e.key === 'Escape') closeModal(); });
+
+if (form && submitBtn){
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      github: form.github.value.trim(),
+      phone: form.phone ? form.phone.value.trim() : ''
+    };
+    addRegistration(data);
+    console.log('Saved registration:', data);
+    if (statusMsg){ statusMsg.textContent = '✅ Successful — details uploaded. We\'ll contact you soon.'; statusMsg.className = 'status ok'; }
+    form.reset();
+    setTimeout(closeModal, 1200);
+  });
+}
+
+// Registration data saved to localStorage — view via admin.html
+</script>
+
+</body>
 </html>
