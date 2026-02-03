@@ -70,11 +70,6 @@
   }
 }
 
-.contributor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-}
-
 .contributor-card-inner {
   position: relative;
   display: flex;
@@ -109,25 +104,36 @@
   transform: scale(1.06);
   background: rgb(255 248 231 / 95%);
 }
-
 .contributor-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 1.8rem 2rem;
-  box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 96%),
+    rgb(255 255 255 / 88%)
+  );
+  border-radius: 20px;
+  padding: 1.5rem 1.55rem 1.35rem;
+  box-shadow:
+    0 6px 16px rgb(0 0 0 / 6%)
+    inset 0 1px 0 rgb(255 255 255 / 60%);
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  max-width: 460px;
-  margin: 1rem auto;
+  max-width: 360px;
+  margin: 0 auto;
   position: relative;
+
+  /* 🔹 REQUIRED for issue */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+
 .contributor-card:hover {
-  box-shadow: 0 12px 28px rgb(0 0 0 / 0.15);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 45px rgb(0 0 0 / 14%),
+    0 0 0 2px rgb(212 175 55 / 45%);
 }
+
 
 .contributor-avatar {
   width: 72px;
@@ -276,9 +282,7 @@
   .contributors-grid {
     gap: 1rem;
   }
-  .contributor-card {
-    padding: 1.1rem;
-  }
+ 
   .contributor-card-inner {
     flex-direction: column;
     text-align: center;
@@ -430,22 +434,7 @@
   margin-bottom: 2rem;
 }
 
-.contributor-card {
-  background: var(--secondary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
 
-.contributor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgb(0 247 255 / 10%);
-  border-color: var(--glow);
-}
 
 .contributor-card.highlighted {
   border: 2px solid #ffc107;
@@ -659,9 +648,7 @@
     font-size: 1.5rem;
   }
 
-  .contributor-card {
-    padding: 1rem;
-  }
+
 
   .contributor-card img {
     width: 60px;
@@ -723,11 +710,6 @@
   }
 }
 
-.contributor-card {
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 1.8rem 1.8rem 1.5rem;
-}
 
 
 /* Tablet */
@@ -745,27 +727,6 @@
   }
 }
 
-/* Card refinement */
-.contributor-card {
-  padding: 1.5rem 1.55rem 1.35rem;
-  border-radius: 20px;
-  background: linear-gradient(
-    180deg,
-    rgb(255 255 255 / 96%),
-    rgb(255 255 255 / 88%)
-  );
-  box-shadow:
-    0 12px 30px rgb(0 0 0 / 8%),
-    inset 0 1px 0 rgb(255 255 255 / 60%);
-}
-
-/* Hover feels lighter */
-.contributor-card:hover {
-  transform: translateY(-5px);
-  box-shadow:
-    0 18px 40px rgb(0 0 0 / 12%),
-    inset 0 1px 0 rgb(255 255 255 / 65%);
-}
 
 /* Inner layout spacing */
 .contributor-card-inner {
