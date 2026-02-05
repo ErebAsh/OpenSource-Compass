@@ -179,15 +179,48 @@
   border-radius: 16px;
   padding: 2rem 1.8rem;
   box-shadow: var(--shadow-main);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
   border-left: 6px solid var(--primary-gold);
+
+  /* animation prep */
+.template-tile {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
-.template-tile:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
 }
+
+
+.template-tile:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(212, 175, 55, 0.25);
+  border-left-color: var(--primary-gold);
+    background: #1b2238;
+}
+
+/* Text visibility fix on hover */
+.template-tile:hover h5 {
+  color: #ffffff;
+}
+
+.template-tile:hover p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.template-tile:hover a {
+  color: #ffffff;
+}
+
+.template-tile:hover a::after {
+  background: #ffffff;
+}
+
 
 /* Icon */
 .tile-icon {
@@ -195,6 +228,15 @@
   margin-bottom: 1rem;
   color: var(--primary-gold);
 }
+
+.template-tile .tile-icon {
+  transition: transform 0.35s ease;
+}
+
+.template-tile:hover .tile-icon {
+  transform: translateY(-2px) scale(1.05);
+}
+
 
 /* Content */
 .tile-content h5 {
@@ -546,5 +588,14 @@
 .empty-state p {
   font-size: 0.95rem;
   color: #777;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .template-tile,
+  .template-tile:hover,
+  .template-tile .tile-icon {
+    transition: none;
+    transform: none;
+  }
 }
 
