@@ -110,6 +110,49 @@ setTimeout(() => {
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
+function parseMarkdown(text) {
+    // IMPORTANT WORDS to highlight automatically
+    const importantWords = [
+        "open source",
+        "OpenSource Guide",
+        "documentation",
+        "programs",
+        "guides",
+        "project",
+        "maintainers",
+        "community"
+    ];
+
+    // Escape HTML to prevent injection
+    text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    // Code blocks ```code```
+    text = text.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+
+    // Inline code `code`
+    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Bold **text** (manual markdown)
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // Links [text](url)
+    text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+    // Bullet points
+    text = text.replace(/^- (.*)$/gm, '<li>$1</li>');
+    text = text.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+
+    // 🔥 Auto highlight important keywords in bold
+    importantWords.forEach(word => {
+        const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+        text = text.replace(regex, '<strong>$1</strong>');
+    });
+
+    return text;
+}
+
+
+
     function addMessage(text, sender) {
     const msgDiv = document.createElement('div');
     msgDiv.className = `message ${sender}`;
@@ -117,7 +160,8 @@ setTimeout(() => {
     // Message text
     const messageText = document.createElement('div');
     messageText.className = 'message-text';
-    messageText.textContent = text;
+    messageText.innerHTML = parseMarkdown(text);
+
 
     // Timestamp
     const timestamp = document.createElement('div');

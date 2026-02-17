@@ -41,6 +41,30 @@ body.dark-mode {
     color: #555;
 }
 
+.message-text code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.message-text pre {
+    background: #f4f4f4;
+    padding: 8px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.message-text ul {
+    margin: 5px 0;
+    padding-left: 18px;
+}
+
+.message-text a {
+    color: #1a73e8;
+    text-decoration: underline;
+}
+
 
 /* Floating Chat Button */
 .chat-widget-btn {
